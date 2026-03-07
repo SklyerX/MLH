@@ -16,12 +16,17 @@ Usage:
     # Analyze multiple zones in parallel (recommended)
     results = analyze_zones_parallel(cropped_zones_dict, symptoms="itching")
 """
+import os
+from dotenv import load_dotenv
+import google.genai as genai
+load_dotenv()  # ADD this line
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 import json
 import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from PIL import Image
-import google.generativeai as genai
+
 
 
 # ---------------------------------------------------------------------------
@@ -172,9 +177,11 @@ def analyze_zone(zone_name: str, zone_image: Image.Image, symptoms: str = "") ->
         hydration, redness, pores, confidence, notes.
     """
     try:
-        model = genai.GenerativeModel("gemini-1.5-flash")
-        prompt = _build_prompt(zone_name, symptoms)
-        response = model.generate_content([prompt, zone_image])
+        prompt = _build_prompt(zone_name, symptoms)  # ✅ ADD this line
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=[prompt, zone_image],
+        )
         return _parse_response(response.text, zone_name)
 
     except Exception as exc:

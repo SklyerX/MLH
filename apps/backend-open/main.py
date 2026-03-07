@@ -20,8 +20,7 @@ from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
-import google.generativeai as genai
-
+from google import genai
 from face_zones import ALL_ZONE_NAMES, get_face_zones
 from gemini_analyzer import analyze_zones_parallel
 from rag_recommender import get_recommendations, load_embeddings
@@ -39,7 +38,7 @@ if not api_key:
         "Make sure you have a .env file in the backend/ folder with GEMINI_API_KEY=your_key"
     )
 
-genai.configure(api_key=api_key)
+client = genai.Client(api_key=api_key)
 
 app = Flask(__name__)
 CORS(app)  # Allow requests from the frontend at localhost:3000
@@ -186,7 +185,8 @@ def analyze():
         # ---- 7. Aggregate issues across all zones -------------------------
         all_issues = []
         for result in zone_results.values():
-            all_issues.extend(result.get("issues_detected", []))
+            if result is not None:
+                all_issues.extend(result.get("issues_detected", []))
 
         issue_counts = Counter(all_issues)
         top_issues = [issue for issue, _ in issue_counts.most_common(5)]

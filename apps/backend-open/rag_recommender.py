@@ -19,10 +19,14 @@ Usage:
     # results is a list of:
     # { "product": { name, brand, price, image_url, buy_link, ... }, "reason": "..." }
 """
+import os
+from dotenv import load_dotenv
+from google import genai
+load_dotenv()
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 import json
 import numpy as np
-import google.generativeai as genai
 
 
 # ---------------------------------------------------------------------------
@@ -65,12 +69,10 @@ def _search_products(query: str, embedded_products: list[dict], top_k: int) -> l
     Embed the query and return the top_k most similar products.
     Returns full product dicts (without the embedding vector).
     """
-    query_result = genai.embed_content(
+    query_result = client.models.embed_content(
         model="models/gemini-embedding-001",
-        content=query,
-        task_type="retrieval_query",
-    )
-    query_vector = np.array(query_result["embedding"], dtype=np.float32)
+        contents=query,)
+    query_vector = np.array(query_result.embeddings[0].values, dtype=np.float32)
 
     scored = []
     for product in embedded_products:
@@ -128,8 +130,10 @@ Example: ["Salicylic acid unclogs pores and reduces your blackheads.", "Ceramide
 No markdown, no preamble, just the JSON array.
 """
 
-    model = genai.GenerativeModel("gemini-1.5-flash")
-    response = model.generate_content(prompt)
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=prompt,
+    )
 
     try:
         text = response.text.strip()
