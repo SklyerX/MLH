@@ -1,10 +1,15 @@
 from dp import seq_align
 from Bio import SeqIO
 import json
+import sys
+
+output_path = sys.argv[1]
+crime_dna_file = sys.argv[2]
+suspect_dna_file = sys.argv[3]
 
 # ── Load crime scene DNA (Homo sapiens only) ──────────────────────────────────
 crime_scene_sequences = {}
-for record in SeqIO.parse("crime_scene_dna.fasta", "fasta"):
+for record in SeqIO.parse(crime_dna_file, "fasta"):
     organism = "Not Found"
     for part in record.description.split("|")[1:]:
         p = part.strip()
@@ -20,7 +25,7 @@ for record in SeqIO.parse("crime_scene_dna.fasta", "fasta"):
 print(f"Crime scene human samples: {list(crime_scene_sequences.keys())}")
 
 suspect_sequences = {}
-for record in SeqIO.parse("suspect_dna.fasta", "fasta"):
+for record in SeqIO.parse(suspect_dna_file, "fasta"):
     organism = "Not Found"
     for part in record.description.split("|")[1:]:
         p = part.strip()
@@ -57,16 +62,18 @@ score_range = max_score - min_score if max_score != min_score else 1
 results_list = []
 for suspect_id, best_score, scene_scores in name_score_pairs:
     confidence = (best_score - min_score) / score_range
-    results_list.append({
-        "suspect_id": suspect_id,
-        "best_alignment_score": best_score,
-        "confidence": round(confidence, 4),
-        "scene_breakdown": scene_scores
-    })
+    results_list.append(
+        {
+            "suspect_id": suspect_id,
+            "best_alignment_score": best_score,
+            "confidence": round(confidence, 4),
+            "scene_breakdown": scene_scores,
+        }
+    )
 
 results_list.sort(key=lambda x: x["confidence"], reverse=True)
 
 json_output = json.dumps(results_list, indent=4)
 print(json_output)
-with open("dna_results.json", "w") as f:
+with open(f"{output_path}/dna_results.json", "w") as f:
     f.write(json_output)
