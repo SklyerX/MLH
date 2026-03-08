@@ -40,6 +40,7 @@ name_score_pairs = []
 for suspect_id, suspect_seq in suspect_sequences.items():
     best_score = 0
     scene_scores = {}
+    perfect_score = seq_align(suspect_seq, suspect_seq)
     for scene_id, scene_seq in crime_scene_sequences.items():
         score = seq_align(suspect_seq, scene_seq)
         scene_scores[scene_id] = score
@@ -55,8 +56,9 @@ score_range = max_score - min_score if max_score != min_score else 1
 
 # ── Build & export JSON ───────────────────────────────────────────────────────
 results_list = []
-for suspect_id, best_score, scene_scores in name_score_pairs:
-    confidence = (best_score - min_score) / score_range
+for suspect_id, best_score, perfect_score, scene_scores in name_score_pairs:
+    confidence = min(best_score / perfect_score,
+                     1.0) if perfect_score > 0 else 0.0
     results_list.append({
         "suspect_id": suspect_id,
         "best_alignment_score": best_score,
