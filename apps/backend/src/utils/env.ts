@@ -7,5 +7,6 @@ const envSchema = z.object({
     z.literal("production"),
   ]),
   PORT: z.coerce.number(),
+  GEMINI_API_KEY: z.string(),
 });
 export const env = envSchema.parse(process.env);

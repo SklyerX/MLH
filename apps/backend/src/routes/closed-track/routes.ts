@@ -4,7 +4,9 @@ import { Hono } from "hono";
 import { writeFile, mkdir } from "fs/promises";
 import path from "path";
 import os from "os";
-import { readFileSync } from "fs";
+import { readFileSync, rmSync } from "fs";
+import { zValidator } from "@hono/zod-validator";
+import z from "zod";
 
 const closedTrackRoutes = new Hono();
 
@@ -100,11 +102,50 @@ async function saveFile(file: File, dir: string) {
   return filePath;
 }
 
+closedTrackRoutes.post(
+  "/imagine",
+  zValidator(
+    "json",
+    z.object({
+      dna_sequence: z.string().min(32).max(10_000),
+    }),
+  ),
+  async (c) => {
+    const { dna_sequence } = c.req.valid("json");
+
+    const date = Date.now();
+    const baseDir = path.join(os.tmpdir(), `imagine-${date}`);
+    const outputPath = path.join(baseDir, "imagine-output");
+
+    await mkdir(baseDir, { recursive: true });
+    await mkdir(outputPath, { recursive: true });
+
+    await runProcess(`${process.cwd()}/binary/generation`, [
+      outputPath,
+      dna_sequence,
+    ]);
+
+    const imgPath = path.join(`${outputPath}/dna_sketch.png`);
+
+    const image = readFileSync(imgPath);
+    rmSync(imgPath);
+
+    return c.body(image, {
+      headers: {
+        "Content-Type": "image/png",
+      },
+    });
+  },
+);
+
+export default closedTrackRoutes;
+
 function runProcess(cmd: string, options: string[]) {
   return new Promise((resolve, reject) => {
     const child = spawn(cmd, options);
 
     child.on("close", (code) => {
+      console.log(code);
       if (code === 0) resolve({ success: true, error: null });
       else reject(new Error(`Process exited with code ${code}`));
     });
@@ -114,5 +155,3 @@ function runProcess(cmd: string, options: string[]) {
     });
   });
 }
-
-export default closedTrackRoutes;
