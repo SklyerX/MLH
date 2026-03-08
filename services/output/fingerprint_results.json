@@ -1,0 +1,77 @@
+[
+    {
+        "name": "Mei_Lin_Zhao.BMP",
+        "score": 0,
+        "confidence": 0.0
+    },
+    {
+        "name": "Fiona_Castellano.BMP",
+        "score": 1,
+        "confidence": 0.2
+    },
+    {
+        "name": "Nikolai_Petrov.BMP",
+        "score": 3,
+        "confidence": 0.6
+    },
+    {
+        "name": "Yusuf_Al-Rashid.BMP",
+        "score": 2,
+        "confidence": 0.4
+    },
+    {
+        "name": "Aaliya_Mensah.BMP",
+        "score": 1,
+        "confidence": 0.2
+    },
+    {
+        "name": "Tom_Breck.BMP",
+        "score": 1,
+        "confidence": 0.2
+    },
+    {
+        "name": "Marcus_Hale.BMP",
+        "score": 1,
+        "confidence": 0.2
+    },
+    {
+        "name": "Elena_Voss.BMP",
+        "score": 1,
+        "confidence": 0.2
+    },
+    {
+        "name": "Serena_Okafor.BMP",
+        "score": 0,
+        "confidence": 0.0
+    },
+    {
+        "name": "Priya_Nair.BMP",
+        "score": 5,
+        "confidence": 1.0
+    },
+    {
+        "name": "Tobias_Grunewald.BMP",
+        "score": 0,
+        "confidence": 0.0
+    },
+    {
+        "name": "Liam_Oduya.BMP",
+        "score": 0,
+        "confidence": 0.0
+    },
+    {
+        "name": "Dmitri_Volkov.BMP",
+        "score": 3,
+        "confidence": 0.6
+    },
+    {
+        "name": "Raymond_Cho.BMP",
+        "score": 3,
+        "confidence": 0.6
+    },
+    {
+        "name": "Rosa_Delgado.BMP",
+        "score": 1,
+        "confidence": 0.2
+    }
+]
