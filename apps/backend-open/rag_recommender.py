@@ -11,13 +11,15 @@ Usage:
 
     # Call on each user request
     results = get_recommendations(
-        detected_issues=["acne", "oiliness", "enlarged pores"],
+        ordered_findings=[
+            {"finding": "acne (cheeks, moderate)", "zone": "cheeks", "severity": "moderate", "issue": "acne"},
+        ],
         symptoms="itching on my forehead, burning on cheeks",
         embedded_products=products,
         top_k=3
     )
     # results is a list of:
-    # { "product": { name, brand, price, image_url, buy_link, ... }, "reason": "..." }
+    # { "product": {...}, "reason": "acne", "usage": "apply once daily" }
 """
 import os
 from dotenv import load_dotenv
@@ -26,6 +28,7 @@ load_dotenv()
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 import json
+import re
 import numpy as np
 
 
@@ -97,14 +100,14 @@ def _search_products(query: str, embedded_products: list[dict], top_k: int) -> l
 
 def _generate_reasons(
     top_products: list[dict],
-    detected_issues: list[str],
+    ordered_findings: list[dict],
     symptoms: str,
 ) -> list[dict]:
     """
-    Ask Gemini to write a short personalised reason for each product.
-    Returns a list of { product, reason } dicts.
+    Ask Gemini to return short reason (issue tag) + usage instruction per product.
+    Returns a list of { product, reason, usage } dicts.
     """
-    issues_text = ", ".join(detected_issues) if detected_issues else "general skin care"
+    findings_text = "; ".join(f["finding"] for f in ordered_findings[:10]) if ordered_findings else "general skin care"
     symptoms_text = f' The user also reports: "{symptoms}".' if symptoms and symptoms.strip() else ""
 
     product_list_text = "\n".join([
@@ -115,18 +118,17 @@ def _generate_reasons(
     ])
 
     prompt = f"""
-You are a skincare expert writing product recommendations for a customer.
+You are a skincare expert. For each product below, return:
+1. "reason": a SHORT issue tag only (1–3 words). Examples: "acne", "blackheads", "clogged pores", "dryness", "dark circles"
+2. "usage": a SHORT instruction (max 10 words). Examples: "wash every morning and night", "apply once daily", "apply before bed"
 
-The customer's skin analysis detected these issues: {issues_text}.{symptoms_text}
+Customer's issues (ordered by severity): {findings_text}.{symptoms_text}
 
-Here are the matched products:
+Products:
 {product_list_text}
 
-For each product, write ONE short sentence (max 20 words) explaining exactly why it helps THIS customer's specific issues.
-Be specific — mention the ingredient and the issue it addresses.
-
-Return ONLY a JSON array of strings, one reason per product, in the same order.
-Example: ["Salicylic acid unclogs pores and reduces your blackheads.", "Ceramides repair your dry skin barrier."]
+Return ONLY a JSON array of objects, one per product, same order:
+[{{"reason": "acne", "usage": "apply once daily"}}, {{"reason": "blackheads", "usage": "wash morning and night"}}]
 No markdown, no preamble, just the JSON array.
 """
 
@@ -137,23 +139,21 @@ No markdown, no preamble, just the JSON array.
 
     try:
         text = response.text.strip()
-        # Strip markdown fences if present
         if text.startswith("```"):
-            import re
             match = re.search(r"\[[\s\S]*\]", text)
             text = match.group() if match else "[]"
-        reasons = json.loads(text)
+        items = json.loads(text)
     except Exception:
-        # Fallback: generic reason for each product
-        reasons = [
-            f"Recommended for your {issues_text}."
-            for _ in top_products
-        ]
+        items = []
 
-    return [
-        {"product": product, "reason": reason}
-        for product, reason in zip(top_products, reasons)
-    ]
+    results = []
+    for i, product in enumerate(top_products):
+        item = items[i] if i < len(items) and isinstance(items[i], dict) else {}
+        reason = item.get("reason", "skincare") if isinstance(item.get("reason"), str) else "skincare"
+        usage = item.get("usage", "use as directed") if isinstance(item.get("usage"), str) else "use as directed"
+        results.append({"product": product, "reason": reason, "usage": usage})
+
+    return results
 
 
 # ---------------------------------------------------------------------------
@@ -161,18 +161,20 @@ No markdown, no preamble, just the JSON array.
 # ---------------------------------------------------------------------------
 
 def get_recommendations(
-    detected_issues: list[str],
+    ordered_findings: list[dict],
     symptoms: str,
     embedded_products: list[dict],
     top_k: int = 3,
 ) -> list[dict]:
     """
-    Find the best matching products for a user's detected skin issues and symptoms.
+    Find the best matching products for a user's skin findings, ordered by severity
+    (most severe issues first).
 
     Parameters
     ----------
-    detected_issues : list[str]
-        Issues found by gemini_analyzer (e.g. ["acne", "oiliness"]).
+    ordered_findings : list[dict]
+        List of {"finding": str, "zone": str, "severity": str, "issue": str},
+        sorted by severity (most severe first). From main._build_ordered_findings().
     symptoms : str
         Free-text symptoms the user typed (e.g. "itching on forehead").
     embedded_products : list[dict]
@@ -185,15 +187,17 @@ def get_recommendations(
     list[dict]
         Each item has:
           "product" → full product dict with name, brand, price, image_url, buy_link
-          "reason"  → one sentence explaining why it suits this user
+          "reason"  → short issue tag (e.g. "acne", "blackheads")
+          "usage"   → short usage instruction (e.g. "wash every morning and night")
     """
     if not embedded_products:
         return []
 
-    # Build a rich search query from issues + symptoms
+    # Build a rich search query from ordered findings (most severe first)
     query_parts = []
-    if detected_issues:
-        query_parts.append(f"Skincare products for: {', '.join(detected_issues)}")
+    if ordered_findings:
+        findings_str = ", ".join(f["finding"] for f in ordered_findings[:5])
+        query_parts.append(f"Skincare products for: {findings_str}")
     if symptoms and symptoms.strip():
         query_parts.append(f"User reports: {symptoms.strip()}")
 
@@ -204,7 +208,7 @@ def get_recommendations(
 
     try:
         top_products = _search_products(query, embedded_products, top_k)
-        recommendations = _generate_reasons(top_products, detected_issues, symptoms)
+        recommendations = _generate_reasons(top_products, ordered_findings, symptoms)
         return recommendations
 
     except Exception as exc:
@@ -212,7 +216,8 @@ def get_recommendations(
         return [
             {
                 "product": {k: v for k, v in p.items() if k != "embedding"},
-                "reason": "Recommended based on your skin analysis."
+                "reason": "skincare",
+                "usage": "use as directed",
             }
             for p in embedded_products[:top_k]
         ]

@@ -1,7 +1,7 @@
 """
 face_zones.py
 -------------
-Uses MediaPipe FaceMesh to detect a face in an image and crop it into
+Uses MediaPipe FaceLandmarker (tasks API) to detect a face in an image and crop it into
 named skin zones. Only crops the zones that are passed in — skips the rest.
 
 Usage:
@@ -11,17 +11,38 @@ Usage:
     cropped = get_face_zones("photo.jpg", ["forehead", "nose", "chin"])
 """
 
+import os
+import urllib.request
+
 import cv2
-import mediapipe as mp
 import numpy as np
 from PIL import Image
 
+import mediapipe as mp
+from mediapipe.tasks.python import vision
+from mediapipe.tasks.python.vision import (
+    FaceLandmarker,
+    FaceLandmarkerOptions,
+)
 
 # ---------------------------------------------------------------------------
-# MediaPipe setup
+# MediaPipe FaceLandmarker setup (tasks API — works with MediaPipe 0.10+)
 # ---------------------------------------------------------------------------
-_mp_face_mesh = mp.solutions.face_mesh
 
+_MODEL_URL = (
+    "https://storage.googleapis.com/mediapipe-models/face_landmarker/"
+    "face_landmarker/float16/1/face_landmarker.task"
+)
+
+
+def _get_model_path() -> str:
+    """Return path to face_landmarker.task, downloading if needed."""
+    cache_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_mp_cache")
+    os.makedirs(cache_dir, exist_ok=True)
+    model_path = os.path.join(cache_dir, "face_landmarker.task")
+    if not os.path.isfile(model_path):
+        urllib.request.urlretrieve(_MODEL_URL, model_path)
+    return model_path
 
 # ---------------------------------------------------------------------------
 # Zone definitions
@@ -38,11 +59,9 @@ ZONE_PROPORTIONS = {
     "forehead": (0.15, 0.00, 0.85, 0.28),
     "nose":     (0.30, 0.30, 0.70, 0.65),
     "t_zone":   (0.30, 0.00, 0.70, 0.65),   # forehead centre + nose bridge
-    "left_cheek":       (0.00, 0.35, 0.42, 0.72),
-    "right_cheek":      (0.58, 0.35, 1.00, 0.72),
+    "cheeks":   (0.00, 0.35, 1.00, 0.72),   # full width, both cheeks
     "chin":             (0.25, 0.70, 0.75, 1.00),
-    "under_eye_left":   (0.05, 0.28, 0.45, 0.48),
-    "under_eye_right":  (0.55, 0.28, 0.95, 0.48),
+    "undereyes": (0.05, 0.28, 0.95, 0.48),   # full width, both under-eye areas
     "lips":             (0.25, 0.62, 0.75, 0.85),
 }
 
@@ -91,23 +110,26 @@ def get_face_zones(image_path: str, selected_zones: list[str]) -> dict:
     rgb_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2RGB)
     img_h, img_w = rgb_image.shape[:2]
 
-    # --- Run MediaPipe FaceMesh ---
-    with _mp_face_mesh.FaceMesh(
-        static_image_mode=True,
-        max_num_faces=1,
-        refine_landmarks=True,
-        min_detection_confidence=0.5,
-    ) as face_mesh:
-        results = face_mesh.process(rgb_image)
+    # --- Run MediaPipe FaceLandmarker (tasks API) ---
+    model_path = _get_model_path()
+    options = FaceLandmarkerOptions(
+        base_options=mp.tasks.BaseOptions(model_asset_path=model_path),
+        num_faces=1,
+        running_mode=vision.RunningMode.IMAGE,
+    )
+    mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb_image)
 
-    if not results.multi_face_landmarks:
+    with FaceLandmarker.create_from_options(options) as landmarker:
+        results = landmarker.detect(mp_image)
+
+    if not results.face_landmarks:
         raise ValueError(
             "No face detected in the image. "
             "Please upload a well-lit, front-facing photo."
         )
 
     # --- Compute face bounding box from landmarks ---
-    landmarks = results.multi_face_landmarks[0].landmark
+    landmarks = results.face_landmarks[0]
 
     # Convert normalised landmark coords to pixel coords
     xs = [lm.x * img_w for lm in landmarks]

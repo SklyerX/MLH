@@ -37,11 +37,9 @@ _ZONE_CONTEXT = {
     "nose":             "You are examining a cropped image of the NOSE.",
     "t_zone":           "You are examining a cropped image of the T-ZONE "
                         "(the vertical strip covering the forehead and nose bridge).",
-    "left_cheek":       "You are examining a cropped image of the LEFT CHEEK.",
-    "right_cheek":      "You are examining a cropped image of the RIGHT CHEEK.",
+    "cheeks":           "You are examining a cropped image of BOTH CHEEKS.",
     "chin":             "You are examining a cropped image of the CHIN and JAW area.",
-    "under_eye_left":   "You are examining a cropped image of the LEFT UNDER-EYE area.",
-    "under_eye_right":  "You are examining a cropped image of the RIGHT UNDER-EYE area.",
+    "undereyes":        "You are examining a cropped image of BOTH UNDER-EYE areas.",
     "lips":             "You are examining a cropped image of the LIP area.",
 }
 
@@ -56,12 +54,16 @@ STRICT RULES:
 1. Return ONLY a valid JSON object — no markdown fences, no preamble, no explanation.
 2. Only report issues you can actually observe. Do not guess or fabricate.
 3. If image quality is too poor to assess, set "confidence" below 0.5 and
-   "issues_detected" to an empty list [].
+   "issues_detected" to an empty list [] and "findings_detailed" to "".
+4. For issues_detected: each entry MUST be zone-specific. Format: "issue (zone, severity)".
+   Examples: "clogged pores (nose, moderate)", "mild blackheads (forehead)", "extreme acne (cheeks)".
+5. Add findings_detailed: a plain-English summary for the user, e.g. "Clogged pores on nose. Mild blackheads on forehead. Extreme acne on cheeks."
 
 Return exactly this JSON structure (all fields required):
 {{
   "zone": "{zone_name}",
   "issues_detected": [],
+  "findings_detailed": "",
   "severity": "clear",
   "skin_texture": "normal",
   "hydration": "normal",
@@ -72,10 +74,10 @@ Return exactly this JSON structure (all fields required):
 }}
 
 Field value options:
-- issues_detected : array of strings from this list only →
-    ["acne", "blackheads", "whiteheads", "redness", "dryness", "oiliness",
-     "hyperpigmentation", "dark spots", "uneven texture", "fine lines",
-     "enlarged pores", "milia", "dark circles", "puffiness", "chapping"]
+- issues_detected : array of zone-specific strings, e.g. ["clogged pores (nose, moderate)", "mild blackheads (forehead)"]
+  Base issues (use in zone-specific form): acne, blackheads, whiteheads, redness, dryness, oiliness,
+  hyperpigmentation, dark spots, uneven texture, fine lines, enlarged pores, milia, dark circles, puffiness, chapping
+- findings_detailed : one or more sentences for the user, e.g. "Clogged pores on nose. Mild blackheads on forehead."
 - severity        : "clear" | "mild" | "moderate" | "severe"
 - skin_texture    : "smooth" | "normal" | "uneven" | "rough"
 - hydration       : "well-hydrated" | "normal" | "dehydrated" | "oily"
@@ -143,6 +145,7 @@ def _fallback_result(zone_name: str, reason: str = "") -> dict:
     return {
         "zone": zone_name,
         "issues_detected": [],
+        "findings_detailed": "",
         "severity": "unknown",
         "skin_texture": "unknown",
         "hydration": "unknown",

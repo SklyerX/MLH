@@ -13,9 +13,8 @@ Run:
 
 import json
 import os
+import re
 import tempfile
-from collections import Counter
-
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_cors import CORS
@@ -41,7 +40,7 @@ if not api_key:
 client = genai.Client(api_key=api_key)
 
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:5173"])
+CORS(app)  # Allow requests from the frontend at localhost:3000
 
 # ---------------------------------------------------------------------------
 # Load product embeddings ONCE at startup (not on every request)
@@ -75,32 +74,81 @@ def _allowed_file(filename: str) -> bool:
 # Helper: build a plain-English summary from zone results
 # ---------------------------------------------------------------------------
 
-def _build_summary(zone_results: dict, top_issues: list[str], symptoms: str) -> str:
+def _build_summary(zone_results: dict, ordered_findings: list[dict], symptoms: str) -> str:
+    """Build a plain-English summary from zone results and ordered findings."""
     if not zone_results:
         summary = "No areas were analyzed."
-    elif not top_issues:
+    elif not ordered_findings:
         summary = "Your skin looks clear across all analyzed zones."
     else:
-        # Find the zone with the worst severity
-        severity_order = ["clear", "mild", "moderate", "severe", "unknown"]
-        worst_zone = max(
-            zone_results.items(),
-            key=lambda item: severity_order.index(
-                item[1].get("severity", "clear")
-                if item[1].get("severity") in severity_order
-                else "clear"
-            ),
-        )
-        zone_label = worst_zone[0].replace("_", " ").title()
-        summary = (
-            f"Main concerns detected: {', '.join(top_issues[:3])}. "
-            f"The {zone_label} shows the most activity."
-        )
+        # Use findings_detailed from zones for a specific summary
+        findings_parts = []
+        for r in zone_results.values():
+            fd = (r or {}).get("findings_detailed", "").strip()
+            if fd:
+                findings_parts.append(fd)
+        if findings_parts:
+            summary = " ".join(findings_parts)
+        else:
+            # Fallback: use ordered findings
+            top_strs = [f["finding"] for f in ordered_findings[:5]]
+            summary = f"Main concerns: {'; '.join(top_strs)}."
 
     if symptoms and symptoms.strip():
         summary += f" You also reported: {symptoms.strip()}."
 
     return summary
+
+
+def _parse_severity_from_finding(finding: str) -> str | None:
+    """
+    Parse severity from finding string. Format: "issue (zone, severity)" or "mild X (zone)".
+    Returns severity if found, else None.
+    """
+    # Match (zone, severity) - e.g. "clogged pores (nose, moderate)" -> "moderate"
+    m = re.search(r"\([^,]*,\s*([^)]+)\)", finding)
+    if m:
+        s = m.group(1).strip().lower()
+        if s in ("severe", "moderate", "mild", "clear", "extreme"):
+            return "severe" if s == "extreme" else s
+    # Match leading severity: "mild blackheads (forehead)", "extreme acne"
+    for word in ("extreme", "severe", "moderate", "mild"):
+        if finding.lower().startswith(word + " "):
+            return "severe" if word == "extreme" else word
+    return None
+
+
+def _build_ordered_findings(zone_results: dict) -> list[dict]:
+    """
+    Build a list from zone_results, sorted by severity (most severe first).
+    Each item: {"finding": str, "zone": str, "severity": str, "issue": str}
+    Severity is parsed from the finding string when present; else uses zone severity.
+    """
+    severity_order = {"severe": 4, "moderate": 3, "mild": 2, "clear": 1, "unknown": 0}
+
+    findings: list[dict] = []
+    for zone_name, result in zone_results.items():
+        if not result:
+            continue
+        zone_severity = result.get("severity", "clear") or "clear"
+        issues = result.get("issues_detected", [])
+        for issue_str in issues:
+            if isinstance(issue_str, str) and issue_str.strip():
+                finding = issue_str.strip()
+                severity = _parse_severity_from_finding(finding) or zone_severity
+                findings.append({
+                    "finding": finding,
+                    "zone": zone_name,
+                    "severity": severity,
+                    "issue": finding,
+                })
+
+    # Sort by severity (most severe first)
+    findings.sort(
+        key=lambda f: severity_order.get(f["severity"].lower(), 0),
+        reverse=True,
+    )
+    return findings
 
 
 # ---------------------------------------------------------------------------
@@ -182,30 +230,26 @@ def analyze():
             max_workers=4,
         )
 
-        # ---- 7. Aggregate issues across all zones -------------------------
-        all_issues = []
-        for result in zone_results.values():
-            if result is not None:
-                all_issues.extend(result.get("issues_detected", []))
+        # ---- 7. Build ordered findings (zone + issue + severity, most severe first) ----
+        ordered_findings = _build_ordered_findings(zone_results)
+        top_issues = [f["finding"] for f in ordered_findings[:5]]  # for backward compat
 
-        issue_counts = Counter(all_issues)
-        top_issues = [issue for issue, _ in issue_counts.most_common(5)]
-
-        # ---- 8. RAG product recommendations -------------------------------
+        # ---- 8. RAG product recommendations (ordered by severity) ----------------
         recommendations = get_recommendations(
-            detected_issues=top_issues,
+            ordered_findings=ordered_findings,
             symptoms=symptoms,
             embedded_products=embedded_products,
             top_k=3,
         )
 
-        # ---- 9. Build summary ---------------------------------------------
-        summary = _build_summary(zone_results, top_issues, symptoms)
+        # ---- 9. Build summary ---------------------------------------------------
+        summary = _build_summary(zone_results, ordered_findings, symptoms)
 
-        # ---- 10. Return full response -------------------------------------
+        # ---- 10. Return full response -------------------------------------------
         return jsonify({
             "summary": summary,
             "top_issues": top_issues,
+            "ordered_findings": ordered_findings,
             "zones": zone_results,
             "recommendations": recommendations,
             "zones_analyzed": list(zone_results.keys()),

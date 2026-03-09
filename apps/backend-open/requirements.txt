@@ -1,0 +1,41 @@
+# Core dependencies for the Skin Analyzer backend
+flask==3.1.0
+flask-cors==6.0.0
+python-dotenv==1.2.2
+
+# Google AI and Gemini dependencies
+google-genai==1.66.0
+google-auth==2.49.0
+
+# Image processing and computer vision
+pillow==12.1.1
+opencv-contrib-python==4.11.0.86
+mediapipe==0.10.21
+
+# Scientific computing
+numpy==1.26.4
+scipy==1.15.3
+matplotlib==3.10.8
+
+# Machine learning and embeddings
+sentencepiece==0.2.1
+jax==0.6.2
+jaxlib==0.6.2
+
+# HTTP and networking
+requests==2.32.5
+httpx==0.28.1
+urllib3==2.6.3
+
+# Data processing and validation
+pydantic==2.12.5
+pydantic_core==2.41.5
+packaging==26.0
+
+# Audio processing (for potential future features)
+sounddevice==0.5.5
+
+# Utilities
+tenacity==9.1.4
+websockets==16.0
+protobuf==4.25.8
