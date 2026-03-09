@@ -1,159 +1,290 @@
-# Turborepo starter
+# Echoes AI | Hackathon Monorepo
 
-This Turborepo starter is maintained by the Turborepo core team.
+Echoes AI is a dual-track hackathon project containing:
 
-## Using this example
+• **Closed Track:** AI-powered forensic investigation tool  
+• **Open Track:** AI skin health diagnostic assistant
 
-Run the following command:
+The repository is organized as a **monorepo** containing multiple frontends, backends, and analysis services.
 
-```sh
-npx create-turbo@latest
+---
+
+# Project Overview
+
+## Closed Track: Echoes Forensics
+
+Echoes Forensics is an **AI-assisted forensic investigation platform** designed to help identify suspects using **fingerprint analysis and DNA matching**.
+
+Investigators upload:
+
+• Crime scene fingerprint  
+• Suspect fingerprint database  
+• Crime scene DNA sequence  
+• Suspect DNA database
+
+The platform analyzes the evidence and generates a **ranked suspect analysis report**.
+
+### Key Capabilities
+
+**Fingerprint Matching**
+
+Computer vision techniques extract fingerprint keypoints and compare them against a suspect fingerprint database to determine the closest match.
+
+**DNA Sequence Matching**
+
+DNA samples are analyzed using sequence alignment techniques to measure similarity between the crime scene sample and suspect DNA records.
+
+**Unified Investigation Dashboard**
+
+The results are displayed in an investigative dashboard showing:
+
+• Best fingerprint match  
+• DNA similarity scores  
+• Ranked suspect likelihood  
+• Visual fingerprint comparison output  
+
+This demonstrates how **AI, computer vision, and bioinformatics** can assist forensic investigations.
+
+---
+
+## Open Track: AI Skin Health Analyzer
+
+The Open Track project is an **AI-powered skin diagnostic assistant**.
+
+Users can:
+
+1. Upload a **photo of their face**
+2. Select **specific facial zones**
+3. Enter **skin symptoms or concerns**
+
+The AI analyzes the image and symptoms to generate:
+
+• Skin condition analysis  
+• Recommended skincare actions  
+• Preventative suggestions  
+• Product recommendations with links
+
+The goal is to create an **accessible AI skin health assistant** that helps users better understand and manage their skincare.
+
+---
+
+# Repository Structure
+
+```
+.
+├── apps
+│   ├── frontend           # Closed track frontend (NextJS)
+│   ├── backend            # Closed track backend (Hono + Node)
+│   ├── frontend-open      # Open track frontend (React)
+│   └── backend-open       # Open track backend (Python)
+│
+├── services               # Closed track Python analysis services
+│
+└── README.md
 ```
 
-## What's inside?
+---
 
-This Turborepo includes the following packages/apps:
+# Tech Stack
 
-### Apps and Packages
+## Closed Track
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+Frontend  
+• Next.js  
+• React  
+• TypeScript  
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+Backend  
+• Node.js  
+• TypeScript  
+• Hono  
 
-### Utilities
+Services  
+• Python  
+• Computer Vision (Fingerprint Matching)  
+• DNA Sequence Analysis  
+• Gemini AI  
 
-This Turborepo has some additional tools already setup for you:
+---
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+## Open Track
 
-### Build
+Frontend  
+• React  
 
-To build all apps and packages, run the following command:
+Backend  
+• Python  
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+---
 
-```sh
-cd my-turborepo
-turbo build
+# Demo Videos
+
+## Closed Track Demo
+
+Insert video link here
+
+---
+
+## Open Track Demo
+
+Insert video link here
+
+---
+
+# Bonus Feature (Closed Track)
+
+Our bonus feature demonstrates how **DNA evidence can be transformed into visual investigative insight**.
+
+After analyzing the DNA sequence, the system uses AI to **generate a potential suspect image representation** based on predicted characteristics.
+
+This concept explores how genomic analysis could assist investigators in visualizing potential suspects.
+
+### Bonus Feature Demo
+
+Insert video link here
+
+---
+
+# Setup Instructions
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/sklyerx/mlh.git
+cd mlh
 ```
 
-Without global `turbo`, use your package manager:
+---
 
-```sh
-cd my-turborepo
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
+# Running the Closed Track
+
+## Start Analysis Services
+
+Navigate to the services directory.
+
+```bash
+cd services
 ```
 
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+Install dependencies.
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo build --filter=docs
+```bash
+pip install -r requirements.txt
 ```
 
-Without global `turbo`:
+Run the analysis services.
 
-```sh
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
+Example:
+
+```bash
+python Fingerprint_analysis.py
+python dna_analysis.py
 ```
 
-### Develop
+---
 
-To develop all apps and packages, run the following command:
+## Start Closed Track Backend
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo dev
+```bash
+cd apps/backend
 ```
 
-Without global `turbo`, use your package manager:
+Install dependencies.
 
-```sh
-cd my-turborepo
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
+```bash
+pnpm install
 ```
 
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+Start the server.
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo dev --filter=web
+```bash
+pnpm dev
 ```
 
-Without global `turbo`:
+make sure to also update the .env with the values displayed in the `.env.example` file
 
-```sh
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
+---
+
+## Start Closed Track Frontend
+
+```bash
+cd apps/frontend
 ```
 
-### Remote Caching
+Install dependencies.
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo login
+```bash
+pnpm install
 ```
 
-Without global `turbo`, use your package manager:
+Run the development server.
 
-```sh
-cd my-turborepo
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
+```bash
+pnpm dev
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+Open the application:
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo link
+```
+http://localhost:3000
 ```
 
-Without global `turbo`:
+---
 
-```sh
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
+# Running the Open Track
+
+## Start Open Track Backend
+
+```bash
+cd apps/backend-open
 ```
 
-## Useful Links
+Install dependencies.
 
-Learn more about the power of Turborepo:
+```bash
+pip install -r requirements.txt
+```
 
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+Run the backend.
+
+```bash
+python main.py
+```
+
+---
+
+## Start Open Track Frontend
+
+```bash
+cd apps/frontend-open
+```
+
+Install dependencies.
+
+```bash
+npm install
+```
+
+Run the development server.
+
+```bash
+npm start
+```
+
+---
+
+# Why This Matters
+
+Echoes AI explores how modern technologies such as **AI, computer vision, and bioinformatics** can be combined to solve real-world investigative and healthcare problems.
+
+The project demonstrates how AI systems can assist in:
+
+• Criminal investigation workflows  
+• Evidence analysis  
+• Personal healthcare insights  
+
+---
+
+# Team
+
+Built during the hackathon using a **monorepo architecture** to rapidly develop and integrate multiple services, APIs, and frontends.
