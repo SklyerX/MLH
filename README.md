@@ -1,5 +1,7 @@
 # Echoes AI | Hackathon Monorepo
 
+*note none of the API keys that were originally posted to the repo work, you have to insert your own. These keys have been deleted*
+
 Echoes AI is a dual-track hackathon project containing:
 
 • **Closed Track:** AI-powered forensic investigation tool  
@@ -121,13 +123,13 @@ Backend
 
 ## Closed Track Demo
 
-Insert video link here
+<video controls src="https://pub-011ff4419e5d452cb3c18898a4a2eea4.r2.dev/2026-03-08%2023-30-55.mov" title="Closed Track DEMO"></video>
 
 ---
 
 ## Open Track Demo
 
-Insert video link here
+[Open Track Demo](https://youtu.be/iXSHztcZv14)
 
 ---
 
@@ -141,7 +143,7 @@ This concept explores how genomic analysis could assist investigators in visuali
 
 ### Bonus Feature Demo
 
-Insert video link here
+<video controls src="https://pub-011ff4419e5d452cb3c18898a4a2eea4.r2.dev/20260309-0332-30.8161181.mp4" title="Bonus feature for closed track"></video>
 
 ---
 
