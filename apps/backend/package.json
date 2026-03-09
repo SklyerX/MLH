@@ -7,8 +7,10 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
+    "@ai-sdk/google": "^3.0.43",
     "@hono/node-server": "^1.19.11",
     "@hono/zod-validator": "^0.7.6",
+    "ai": "^6.0.116",
     "dotenv": "^17.3.1",
     "hono": "^4.12.5",
     "node-cache": "^5.1.2",
