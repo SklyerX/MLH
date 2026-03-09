@@ -44,8 +44,7 @@ for name in os.listdir(folder):
 
 final_score = 0
 if best_matches and len(best_matches) >= 4:
-    src_pts = np.float32(
-        [e_kp[m.queryIdx].pt for m in best_matches]).reshape(-1, 1, 2)
+    src_pts = np.float32([e_kp[m.queryIdx].pt for m in best_matches]).reshape(-1, 1, 2)
     dst_pts = np.float32([best_kp[m.trainIdx].pt for m in best_matches]).reshape(
         -1, 1, 2
     )
@@ -58,8 +57,7 @@ total_feautures = len(e_kp)
 results_list = []
 for name, score in name_score_pairs:
     confidence = score / total_feautures if total_feautures > 0 else 0
-    results_list.append(
-        {"name": name, "score": score, "confidence": confidence})
+    results_list.append({"name": name, "score": score, "confidence": confidence})
 
 # With this:
 
@@ -79,6 +77,5 @@ if best_matches:
     vis = cv2.drawMatches(
         suspect_file, e_kp, best_img, best_kp, best_matches[:50], None, flags=2
     )
-    cv2.imshow("ORB + RANSAC + Gemini Analysis", vis)
-    cv2.destroyAllWindows()
-    sys.exit()
+
+    cv2.imwrite(f"{output}/fingerprint_matches.png", vis)

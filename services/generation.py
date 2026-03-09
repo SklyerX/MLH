@@ -5,7 +5,7 @@ from pydantic import BaseModel
 from typing import Literal
 import sys
 
-client = genai.Client(api_key="AIzaSyAxDm56IM2ozQ0x2gWuACto-SLRDA1DD3M")
+client = genai.Client(api_key="")
 
 output_path = sys.argv[1]
 DNA_SEQUENCE = sys.argv[2]

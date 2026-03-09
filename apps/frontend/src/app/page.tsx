@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui/button'
-import React from 'react'
+import { buttonVariants } from '@/components/ui/button'
+import Link from 'next/link'
 
 export default function Page() {
   return (
@@ -11,9 +11,7 @@ export default function Page() {
           </h3>
           <p className="text-muted-foreground">Analyze a crime scene</p>
         </div>
-        <Button size="lg">
-          New case
-        </Button>
+        <Link href="/upload" className={buttonVariants({ variant: "default", size: "lg" })}>New case</Link>
       </div>
     </div>
   )

@@ -7,37 +7,37 @@
     {
         "name": "Fiona_Castellano.BMP",
         "score": 1,
-        "confidence": 0.2
+        "confidence": 0.01
     },
     {
         "name": "Nikolai_Petrov.BMP",
         "score": 3,
-        "confidence": 0.6
+        "confidence": 0.03
     },
     {
         "name": "Yusuf_Al-Rashid.BMP",
         "score": 2,
-        "confidence": 0.4
+        "confidence": 0.02
     },
     {
         "name": "Aaliya_Mensah.BMP",
         "score": 1,
-        "confidence": 0.2
+        "confidence": 0.01
     },
     {
         "name": "Tom_Breck.BMP",
         "score": 1,
-        "confidence": 0.2
+        "confidence": 0.01
     },
     {
         "name": "Marcus_Hale.BMP",
         "score": 1,
-        "confidence": 0.2
+        "confidence": 0.01
     },
     {
         "name": "Elena_Voss.BMP",
         "score": 1,
-        "confidence": 0.2
+        "confidence": 0.01
     },
     {
         "name": "Serena_Okafor.BMP",
@@ -47,7 +47,7 @@
     {
         "name": "Priya_Nair.BMP",
         "score": 5,
-        "confidence": 1.0
+        "confidence": 0.05
     },
     {
         "name": "Tobias_Grunewald.BMP",
@@ -62,16 +62,16 @@
     {
         "name": "Dmitri_Volkov.BMP",
         "score": 3,
-        "confidence": 0.6
+        "confidence": 0.03
     },
     {
         "name": "Raymond_Cho.BMP",
         "score": 3,
-        "confidence": 0.6
+        "confidence": 0.03
     },
     {
         "name": "Rosa_Delgado.BMP",
         "score": 1,
-        "confidence": 0.2
+        "confidence": 0.01
     }
 ]

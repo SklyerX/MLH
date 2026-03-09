@@ -7,12 +7,21 @@ import os from "os";
 import { readFileSync, rmSync } from "fs";
 import { zValidator } from "@hono/zod-validator";
 import z from "zod";
+import { randomBytes } from "node:crypto";
+import { existsSync } from "node:fs";
+
+import NC from "node-cache";
+
+const cache = new NC({
+  stdTTL: 24 * 60 * 60, // one day
+});
 
 const closedTrackRoutes = new Hono();
 
 closedTrackRoutes.post("/analyze", async (c) => {
-  const date = Date.now();
-  const baseDir = path.join(os.tmpdir(), `analysis-${date}`);
+  const id = randomBytes(6).toString("hex");
+
+  const baseDir = path.join(os.tmpdir(), `${id}`);
 
   await mkdir(baseDir, { recursive: true });
 
@@ -88,10 +97,17 @@ closedTrackRoutes.post("/analyze", async (c) => {
   );
   const dna_analysis = JSON.parse(raw_dna_analysis);
 
+  const image = readFileSync(`${outputPath}/fingerprint_matches.png`);
+  const base64 = image.toString("base64");
+
   return c.json({
     success: true,
     message: "Successfully analyzed crime scene",
-    data: { suspects: suspectData, dna: dna_analysis },
+    data: {
+      id,
+      suspects: { ...suspectData, image: base64 },
+      dna: dna_analysis,
+    },
   });
 });
 
@@ -103,7 +119,7 @@ async function saveFile(file: File, dir: string) {
 }
 
 closedTrackRoutes.post(
-  "/imagine",
+  "/:id/imagine",
   zValidator(
     "json",
     z.object({
@@ -113,8 +129,9 @@ closedTrackRoutes.post(
   async (c) => {
     const { dna_sequence } = c.req.valid("json");
 
-    const date = Date.now();
-    const baseDir = path.join(os.tmpdir(), `imagine-${date}`);
+    const id = c.req.param("id");
+
+    const baseDir = path.join(os.tmpdir(), `imagine-${id}`);
     const outputPath = path.join(baseDir, "imagine-output");
 
     await mkdir(baseDir, { recursive: true });
@@ -142,16 +159,25 @@ export default closedTrackRoutes;
 
 function runProcess(cmd: string, options: string[]) {
   return new Promise((resolve, reject) => {
+    console.log(`Running: ${cmd}`);
+
     const child = spawn(cmd, options);
 
+    child.stdout.on("data", (data) => {
+      console.log(`[${cmd} stdout]: ${data}`);
+    });
+
+    child.stderr.on("data", (data) => {
+      console.error(`[${cmd} stderr]: ${data}`);
+    });
+
     child.on("close", (code) => {
-      console.log(code);
-      if (code === 0) resolve({ success: true, error: null });
+      console.log(`Process exited with code ${code}`);
+
+      if (code === 0) resolve(true);
       else reject(new Error(`Process exited with code ${code}`));
     });
 
-    child.on("error", (error) => {
-      reject({ success: false, error });
-    });
+    child.on("error", reject);
   });
 }

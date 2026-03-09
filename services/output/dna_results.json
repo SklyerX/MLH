@@ -1,0 +1,114 @@
+[
+    {
+        "suspect_id": "Marcus_Hale",
+        "best_alignment_score": 131,
+        "confidence": 0.2729,
+        "scene_breakdown": {
+            "CRIME_SCENE_SAMPLE_001": 131
+        }
+    },
+    {
+        "suspect_id": "Raymond_Cho",
+        "best_alignment_score": 3,
+        "confidence": 0.0063,
+        "scene_breakdown": {
+            "CRIME_SCENE_SAMPLE_001": 3
+        }
+    },
+    {
+        "suspect_id": "Elena_Voss",
+        "best_alignment_score": 0,
+        "confidence": 0.0,
+        "scene_breakdown": {
+            "CRIME_SCENE_SAMPLE_001": -52
+        }
+    },
+    {
+        "suspect_id": "Priya_Nair",
+        "best_alignment_score": 0,
+        "confidence": 0.0,
+        "scene_breakdown": {
+            "CRIME_SCENE_SAMPLE_001": -4
+        }
+    },
+    {
+        "suspect_id": "Dmitri_Volkov",
+        "best_alignment_score": 0,
+        "confidence": 0.0,
+        "scene_breakdown": {
+            "CRIME_SCENE_SAMPLE_001": -82
+        }
+    },
+    {
+        "suspect_id": "Serena_Okafor",
+        "best_alignment_score": 0,
+        "confidence": 0.0,
+        "scene_breakdown": {
+            "CRIME_SCENE_SAMPLE_001": -167
+        }
+    },
+    {
+        "suspect_id": "Liam_Oduya",
+        "best_alignment_score": 0,
+        "confidence": 0.0,
+        "scene_breakdown": {
+            "CRIME_SCENE_SAMPLE_001": -198
+        }
+    },
+    {
+        "suspect_id": "Fiona_Castellano",
+        "best_alignment_score": 0,
+        "confidence": 0.0,
+        "scene_breakdown": {
+            "CRIME_SCENE_SAMPLE_001": -101
+        }
+    },
+    {
+        "suspect_id": "Yusuf_Al-Rashid",
+        "best_alignment_score": 0,
+        "confidence": 0.0,
+        "scene_breakdown": {
+            "CRIME_SCENE_SAMPLE_001": -153
+        }
+    },
+    {
+        "suspect_id": "Mei_Lin_Zhao",
+        "best_alignment_score": 0,
+        "confidence": 0.0,
+        "scene_breakdown": {
+            "CRIME_SCENE_SAMPLE_001": -133
+        }
+    },
+    {
+        "suspect_id": "Tobias_Grunewald",
+        "best_alignment_score": 0,
+        "confidence": 0.0,
+        "scene_breakdown": {
+            "CRIME_SCENE_SAMPLE_001": -155
+        }
+    },
+    {
+        "suspect_id": "Aaliya_Mensah",
+        "best_alignment_score": 0,
+        "confidence": 0.0,
+        "scene_breakdown": {
+            "CRIME_SCENE_SAMPLE_001": -151
+        }
+    },
+    {
+        "suspect_id": "Nikolai_Petrov",
+        "best_alignment_score": 0,
+        "confidence": 0.0,
+        "scene_breakdown": {
+            "CRIME_SCENE_SAMPLE_001": -109
+        }
+    },
+    {
+        "suspect_id": "Rosa_Delgado",
+        "best_alignment_score": 0,
+        "confidence": 0.0,
+        "scene_breakdown": {
+            "CRIME_SCENE_SAMPLE_001": -87
+        }
+    }
+]
