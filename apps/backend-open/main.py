@@ -41,7 +41,7 @@ if not api_key:
 client = genai.Client(api_key=api_key)
 
 app = Flask(__name__)
-CORS(app)  # Allow requests from the frontend at localhost:3000
+CORS(app, origins=["http://localhost:5173"])
 
 # ---------------------------------------------------------------------------
 # Load product embeddings ONCE at startup (not on every request)

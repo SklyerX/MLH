@@ -7,9 +7,21 @@
     "image_url": "https://www.cerave.com/content/dam/cp-sites/cerave/cerave.com/en-us/products/cleansers/hydrating-facial-cleanser/cerave-hydrating-cleanser-16oz-front.png",
     "buy_link": "https://www.cerave.com/skincare/cleansers/hydrating-facial-cleanser",
     "category": "cleanser",
-    "target_issues": ["dryness", "dehydration", "sensitivity"],
-    "key_ingredients": ["ceramides", "hyaluronic acid", "niacinamide"],
-    "skin_types": ["dry", "sensitive", "normal"],
+    "target_issues": [
+      "dryness",
+      "dehydration",
+      "sensitivity"
+    ],
+    "key_ingredients": [
+      "ceramides",
+      "hyaluronic acid",
+      "niacinamide"
+    ],
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "normal"
+    ],
     "description": "Gentle hydrating cleanser that restores the skin barrier. Ideal for dry and sensitive skin that feels tight after washing."
   },
   {
@@ -20,9 +32,22 @@
     "image_url": "https://www.cerave.com/content/dam/cp-sites/cerave/cerave.com/en-us/products/cleansers/foaming-facial-cleanser/cerave-foaming-facial-cleanser-16oz-front.png",
     "buy_link": "https://www.cerave.com/skincare/cleansers/foaming-facial-cleanser",
     "category": "cleanser",
-    "target_issues": ["oiliness", "acne", "enlarged pores", "blackheads"],
-    "key_ingredients": ["ceramides", "niacinamide", "hyaluronic acid"],
-    "skin_types": ["oily", "combination", "acne-prone"],
+    "target_issues": [
+      "oiliness",
+      "acne",
+      "enlarged pores",
+      "blackheads"
+    ],
+    "key_ingredients": [
+      "ceramides",
+      "niacinamide",
+      "hyaluronic acid"
+    ],
+    "skin_types": [
+      "oily",
+      "combination",
+      "acne-prone"
+    ],
     "description": "Foaming cleanser that removes excess oil and impurities without disrupting the skin barrier. Great for oily and acne-prone skin."
   },
   {
@@ -33,9 +58,21 @@
     "image_url": "https://theordinary.com/cdn/shop/files/TO-Salicylic-Acid-2pct-Solution-30ml-front.jpg",
     "buy_link": "https://theordinary.com/en-us/salicylic-acid-2-solution-100419.html",
     "category": "treatment",
-    "target_issues": ["acne", "blackheads", "whiteheads", "enlarged pores", "oiliness"],
-    "key_ingredients": ["salicylic acid 2%"],
-    "skin_types": ["oily", "combination", "acne-prone"],
+    "target_issues": [
+      "acne",
+      "blackheads",
+      "whiteheads",
+      "enlarged pores",
+      "oiliness"
+    ],
+    "key_ingredients": [
+      "salicylic acid 2%"
+    ],
+    "skin_types": [
+      "oily",
+      "combination",
+      "acne-prone"
+    ],
     "description": "BHA exfoliant that penetrates pores to clear blackheads, whiteheads, and reduce breakouts. Ideal for congested oily skin."
   },
   {
@@ -46,9 +83,22 @@
     "image_url": "https://theordinary.com/cdn/shop/files/TO-Niacinamide-10pct-Zinc-1pct-30ml-front.jpg",
     "buy_link": "https://theordinary.com/en-us/niacinamide-10-zinc-1-100421.html",
     "category": "serum",
-    "target_issues": ["oiliness", "enlarged pores", "acne", "uneven texture", "hyperpigmentation"],
-    "key_ingredients": ["niacinamide 10%", "zinc 1%"],
-    "skin_types": ["oily", "combination", "acne-prone"],
+    "target_issues": [
+      "oiliness",
+      "enlarged pores",
+      "acne",
+      "uneven texture",
+      "hyperpigmentation"
+    ],
+    "key_ingredients": [
+      "niacinamide 10%",
+      "zinc 1%"
+    ],
+    "skin_types": [
+      "oily",
+      "combination",
+      "acne-prone"
+    ],
     "description": "High-strength vitamin B3 serum that reduces sebum, minimizes pores, and fades post-acne marks. A bestseller for oily skin."
   },
   {
@@ -59,9 +109,22 @@
     "image_url": "https://theordinary.com/cdn/shop/files/TO-Hyaluronic-Acid-2pct-B5-30ml-front.jpg",
     "buy_link": "https://theordinary.com/en-us/hyaluronic-acid-2-b5-100436.html",
     "category": "serum",
-    "target_issues": ["dryness", "dehydration", "fine lines", "uneven texture"],
-    "key_ingredients": ["hyaluronic acid 2%", "vitamin B5"],
-    "skin_types": ["dry", "normal", "sensitive", "all"],
+    "target_issues": [
+      "dryness",
+      "dehydration",
+      "fine lines",
+      "uneven texture"
+    ],
+    "key_ingredients": [
+      "hyaluronic acid 2%",
+      "vitamin B5"
+    ],
+    "skin_types": [
+      "dry",
+      "normal",
+      "sensitive",
+      "all"
+    ],
     "description": "Multi-depth hydration serum that plumps skin and reduces fine lines caused by dehydration. Suitable for all skin types."
   },
   {
@@ -69,12 +132,24 @@
     "name": "Retinol 0.5% in Squalane",
     "brand": "The Ordinary",
     "price": "$11.90",
-    "image_url": "https://theordinary.com/cdn/shop/files/TO-Retinol-0.5pct-Squalane-30ml-front.jpg",
+    "image_url": "https://theordinary.com/dw/image/v2/BFKJ_PRD/on/demandware.static/-/Sites-deciem-master/default/dw9817555f/Images/products/The%20Ordinary/rdn-granactive-retinoid-5pct-in-squalane-30ml.png?sw=1200&sh=1200&sm=fit",
     "buy_link": "https://theordinary.com/en-us/retinol-0-5-in-squalane-100380.html",
     "category": "treatment",
-    "target_issues": ["fine lines", "uneven texture", "hyperpigmentation", "dark spots"],
-    "key_ingredients": ["retinol 0.5%", "squalane"],
-    "skin_types": ["normal", "combination", "oily"],
+    "target_issues": [
+      "fine lines",
+      "uneven texture",
+      "hyperpigmentation",
+      "dark spots"
+    ],
+    "key_ingredients": [
+      "retinol 0.5%",
+      "squalane"
+    ],
+    "skin_types": [
+      "normal",
+      "combination",
+      "oily"
+    ],
     "description": "Moderate-strength retinol in a hydrating squalane base to reduce fine lines, smooth texture, and fade dark spots overnight."
   },
   {
@@ -85,9 +160,21 @@
     "image_url": "https://theordinary.com/cdn/shop/files/TO-Alpha-Arbutin-2pct-HA-30ml-front.jpg",
     "buy_link": "https://theordinary.com/en-us/alpha-arbutin-2-ha-100392.html",
     "category": "serum",
-    "target_issues": ["hyperpigmentation", "dark spots", "uneven texture"],
-    "key_ingredients": ["alpha arbutin 2%", "hyaluronic acid"],
-    "skin_types": ["all", "dry", "normal", "oily"],
+    "target_issues": [
+      "hyperpigmentation",
+      "dark spots",
+      "uneven texture"
+    ],
+    "key_ingredients": [
+      "alpha arbutin 2%",
+      "hyaluronic acid"
+    ],
+    "skin_types": [
+      "all",
+      "dry",
+      "normal",
+      "oily"
+    ],
     "description": "Brightening serum that targets dark spots, post-acne marks, and uneven skin tone with alpha arbutin and hydrating HA."
   },
   {
@@ -98,9 +185,21 @@
     "image_url": "https://www.laroche-posay.us/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-lrp-master-catalog/default/effaclar-duo-acne-treatment.jpg",
     "buy_link": "https://www.laroche-posay.us/our-products/face/face-moisturizer/effaclar-duo-dual-action-acne-treatment-cream/3337875545761.html",
     "category": "treatment",
-    "target_issues": ["acne", "blackheads", "enlarged pores", "oiliness"],
-    "key_ingredients": ["benzoyl peroxide 5.5%", "lipo-hydroxy acid"],
-    "skin_types": ["oily", "acne-prone", "combination"],
+    "target_issues": [
+      "acne",
+      "blackheads",
+      "enlarged pores",
+      "oiliness"
+    ],
+    "key_ingredients": [
+      "benzoyl peroxide 5.5%",
+      "lipo-hydroxy acid"
+    ],
+    "skin_types": [
+      "oily",
+      "acne-prone",
+      "combination"
+    ],
     "description": "Dual-action acne treatment that clears breakouts and visibly reduces post-acne marks within 2 weeks."
   },
   {
@@ -111,9 +210,22 @@
     "image_url": "https://www.laroche-posay.us/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-lrp-master-catalog/default/toleriane-double-repair-moisturizer.jpg",
     "buy_link": "https://www.laroche-posay.us/our-products/face/face-moisturizer/toleriane-double-repair-face-moisturizer/3337875545730.html",
     "category": "moisturizer",
-    "target_issues": ["dryness", "sensitivity", "redness", "dehydration"],
-    "key_ingredients": ["ceramides", "niacinamide", "prebiotic thermal water"],
-    "skin_types": ["dry", "sensitive", "normal"],
+    "target_issues": [
+      "dryness",
+      "sensitivity",
+      "redness",
+      "dehydration"
+    ],
+    "key_ingredients": [
+      "ceramides",
+      "niacinamide",
+      "prebiotic thermal water"
+    ],
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "normal"
+    ],
     "description": "Restores the skin barrier and provides 48-hour hydration. Fragrance-free and safe for sensitive skin prone to redness."
   },
   {
@@ -124,9 +236,22 @@
     "image_url": "https://www.laroche-posay.us/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-lrp-master-catalog/default/cicaplast-baume-b5.jpg",
     "buy_link": "https://www.laroche-posay.us/our-products/skin-type/sensitive-skin/cicaplast-baume-b5-multi-purpose-recovery-balm/3337872412706.html",
     "category": "treatment",
-    "target_issues": ["redness", "sensitivity", "dryness", "chapping"],
-    "key_ingredients": ["panthenol B5", "madecassoside", "zinc"],
-    "skin_types": ["sensitive", "dry", "all"],
+    "target_issues": [
+      "redness",
+      "sensitivity",
+      "dryness",
+      "chapping"
+    ],
+    "key_ingredients": [
+      "panthenol B5",
+      "madecassoside",
+      "zinc"
+    ],
+    "skin_types": [
+      "sensitive",
+      "dry",
+      "all"
+    ],
     "description": "Multi-purpose soothing balm that calms redness, repairs irritated skin, and relieves chapping and tightness."
   },
   {
@@ -137,9 +262,23 @@
     "image_url": "https://www.clinique.com/media/export/cms/products/640x600/cl_sku_XG9201_640x600_0.png",
     "buy_link": "https://www.clinique.com/product/1701/22761/skin-care/moisturizers/moisture-surge-100h-auto-replenishing-hydrator",
     "category": "moisturizer",
-    "target_issues": ["dehydration", "dryness", "fine lines", "uneven texture"],
-    "key_ingredients": ["hyaluronic acid", "aloe vera", "activated aloe water"],
-    "skin_types": ["all", "dry", "normal", "combination"],
+    "target_issues": [
+      "dehydration",
+      "dryness",
+      "fine lines",
+      "uneven texture"
+    ],
+    "key_ingredients": [
+      "hyaluronic acid",
+      "aloe vera",
+      "activated aloe water"
+    ],
+    "skin_types": [
+      "all",
+      "dry",
+      "normal",
+      "combination"
+    ],
     "description": "Oil-free gel moisturizer that provides 100 hours of hydration. Instantly plumps and refreshes dehydrated skin."
   },
   {
@@ -150,9 +289,19 @@
     "image_url": "https://www.clinique.com/media/export/cms/products/640x600/cl_sku_6WH901_640x600_0.png",
     "buy_link": "https://www.clinique.com/product/1701/13665/skin-care/serums-concentrates/even-better-clinical-radical-dark-spot-corrector-interrupter",
     "category": "serum",
-    "target_issues": ["dark spots", "hyperpigmentation", "uneven texture"],
-    "key_ingredients": ["vitamin C", "kojic acid", "salicylic acid"],
-    "skin_types": ["all"],
+    "target_issues": [
+      "dark spots",
+      "hyperpigmentation",
+      "uneven texture"
+    ],
+    "key_ingredients": [
+      "vitamin C",
+      "kojic acid",
+      "salicylic acid"
+    ],
+    "skin_types": [
+      "all"
+    ],
     "description": "Clinically proven to reduce the look of dark spots and discolouration in 4-6 weeks. Suitable for all skin tones."
   },
   {
@@ -163,9 +312,22 @@
     "image_url": "https://theordinary.com/cdn/shop/files/TO-Vitamin-C-Suspension-23pct-HA-Spheres-2pct-30ml-front.jpg",
     "buy_link": "https://theordinary.com/en-us/vitamin-c-suspension-23-ha-spheres-2-100424.html",
     "category": "treatment",
-    "target_issues": ["dark spots", "hyperpigmentation", "dullness", "uneven texture", "fine lines"],
-    "key_ingredients": ["vitamin C 23%", "hyaluronic acid 2%"],
-    "skin_types": ["normal", "oily", "combination"],
+    "target_issues": [
+      "dark spots",
+      "hyperpigmentation",
+      "dullness",
+      "uneven texture",
+      "fine lines"
+    ],
+    "key_ingredients": [
+      "vitamin C 23%",
+      "hyaluronic acid 2%"
+    ],
+    "skin_types": [
+      "normal",
+      "oily",
+      "combination"
+    ],
     "description": "High-strength vitamin C treatment for visible brightening, dark spot reduction, and improved skin radiance."
   },
   {
@@ -176,9 +338,21 @@
     "image_url": "https://www.cerave.com/content/dam/cp-sites/cerave/cerave.com/en-us/products/moisturizers/daily-moisturizing-lotion/cerave-daily-moisturizing-lotion-12oz-front.png",
     "buy_link": "https://www.cerave.com/skincare/moisturizers/daily-moisturizing-lotion",
     "category": "moisturizer",
-    "target_issues": ["dryness", "dehydration", "uneven texture"],
-    "key_ingredients": ["ceramides", "hyaluronic acid", "MVE technology"],
-    "skin_types": ["normal", "dry", "sensitive"],
+    "target_issues": [
+      "dryness",
+      "dehydration",
+      "uneven texture"
+    ],
+    "key_ingredients": [
+      "ceramides",
+      "hyaluronic acid",
+      "MVE technology"
+    ],
+    "skin_types": [
+      "normal",
+      "dry",
+      "sensitive"
+    ],
     "description": "Lightweight daily lotion with ceramides and hyaluronic acid for all-day moisture. Fragrance-free and non-comedogenic."
   },
   {
@@ -189,9 +363,22 @@
     "image_url": "https://www.cerave.com/content/dam/cp-sites/cerave/cerave.com/en-us/products/moisturizers/pm-facial-moisturizing-lotion/cerave-pm-facial-moisturizing-lotion-3oz-front.png",
     "buy_link": "https://www.cerave.com/skincare/moisturizers/pm-facial-moisturizing-lotion",
     "category": "moisturizer",
-    "target_issues": ["dryness", "enlarged pores", "oiliness", "uneven texture"],
-    "key_ingredients": ["niacinamide", "ceramides", "hyaluronic acid"],
-    "skin_types": ["normal", "oily", "combination"],
+    "target_issues": [
+      "dryness",
+      "enlarged pores",
+      "oiliness",
+      "uneven texture"
+    ],
+    "key_ingredients": [
+      "niacinamide",
+      "ceramides",
+      "hyaluronic acid"
+    ],
+    "skin_types": [
+      "normal",
+      "oily",
+      "combination"
+    ],
     "description": "Lightweight night moisturizer with niacinamide to refine pores and ceramides to restore the skin barrier overnight."
   },
   {
@@ -202,9 +389,24 @@
     "image_url": "https://theordinary.com/cdn/shop/files/TO-AHA-30pct-BHA-2pct-Peeling-Solution-30ml-front.jpg",
     "buy_link": "https://theordinary.com/en-us/aha-30-bha-2-peeling-solution-100420.html",
     "category": "exfoliant",
-    "target_issues": ["uneven texture", "dark spots", "acne", "blackheads", "dullness"],
-    "key_ingredients": ["glycolic acid", "lactic acid", "salicylic acid", "tartaric acid"],
-    "skin_types": ["normal", "oily", "combination"],
+    "target_issues": [
+      "uneven texture",
+      "dark spots",
+      "acne",
+      "blackheads",
+      "dullness"
+    ],
+    "key_ingredients": [
+      "glycolic acid",
+      "lactic acid",
+      "salicylic acid",
+      "tartaric acid"
+    ],
+    "skin_types": [
+      "normal",
+      "oily",
+      "combination"
+    ],
     "description": "10-minute exfoliating mask with AHAs and BHA to resurface dull skin, clear pores, and fade dark spots. Use once a week."
   },
   {
@@ -215,9 +417,22 @@
     "image_url": "https://www.cetaphil.com/on/demandware.static/-/Sites-us-cetaphil-master-catalog/default/gentle-skin-cleanser-front.jpg",
     "buy_link": "https://www.cetaphil.com/us/cleansers/gentle-skin-cleanser/302993927235.html",
     "category": "cleanser",
-    "target_issues": ["sensitivity", "redness", "dryness"],
-    "key_ingredients": ["niacinamide", "panthenol", "glycerin"],
-    "skin_types": ["sensitive", "dry", "normal", "all"],
+    "target_issues": [
+      "sensitivity",
+      "redness",
+      "dryness"
+    ],
+    "key_ingredients": [
+      "niacinamide",
+      "panthenol",
+      "glycerin"
+    ],
+    "skin_types": [
+      "sensitive",
+      "dry",
+      "normal",
+      "all"
+    ],
     "description": "Ultra-gentle, soap-free cleanser that removes dirt without irritating sensitive or dry skin. Dermatologist recommended."
   },
   {
@@ -228,9 +443,22 @@
     "image_url": "https://www.cetaphil.com/on/demandware.static/-/Sites-us-cetaphil-master-catalog/default/moisturizing-cream-front.jpg",
     "buy_link": "https://www.cetaphil.com/us/moisturizers/moisturizing-cream/302990119961.html",
     "category": "moisturizer",
-    "target_issues": ["dryness", "chapping", "sensitivity", "redness"],
-    "key_ingredients": ["glycerin", "panthenol", "niacinamide"],
-    "skin_types": ["dry", "sensitive", "normal"],
+    "target_issues": [
+      "dryness",
+      "chapping",
+      "sensitivity",
+      "redness"
+    ],
+    "key_ingredients": [
+      "glycerin",
+      "panthenol",
+      "niacinamide"
+    ],
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "normal"
+    ],
     "description": "Rich, non-greasy cream that provides immediate and long-lasting relief from dry, sensitive skin. Fragrance-free."
   },
   {
@@ -241,9 +469,22 @@
     "image_url": "https://www.neutrogena.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-neutrogena-master-catalog/default/rapid-wrinkle-repair-retinol-serum.jpg",
     "buy_link": "https://www.neutrogena.com/products/skin/rapid-wrinkle-repair-retinol-serum/6885786.html",
     "category": "serum",
-    "target_issues": ["fine lines", "dark spots", "uneven texture", "dullness"],
-    "key_ingredients": ["retinol", "hyaluronic acid", "glucose complex"],
-    "skin_types": ["normal", "combination", "dry"],
+    "target_issues": [
+      "fine lines",
+      "dark spots",
+      "uneven texture",
+      "dullness"
+    ],
+    "key_ingredients": [
+      "retinol",
+      "hyaluronic acid",
+      "glucose complex"
+    ],
+    "skin_types": [
+      "normal",
+      "combination",
+      "dry"
+    ],
     "description": "Fast-acting retinol serum that visibly reduces fine lines and wrinkles in just one week. Smooths and brightens skin."
   },
   {
@@ -254,9 +495,22 @@
     "image_url": "https://www.neutrogena.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-neutrogena-master-catalog/default/hydro-boost-water-gel.jpg",
     "buy_link": "https://www.neutrogena.com/products/skin/hydro-boost-water-gel/6811078.html",
     "category": "moisturizer",
-    "target_issues": ["dehydration", "dryness", "fine lines", "dullness"],
-    "key_ingredients": ["hyaluronic acid", "olive extract"],
-    "skin_types": ["oily", "combination", "normal", "all"],
+    "target_issues": [
+      "dehydration",
+      "dryness",
+      "fine lines",
+      "dullness"
+    ],
+    "key_ingredients": [
+      "hyaluronic acid",
+      "olive extract"
+    ],
+    "skin_types": [
+      "oily",
+      "combination",
+      "normal",
+      "all"
+    ],
     "description": "Oil-free water gel that instantly quenches dehydrated skin and maintains hydration throughout the day."
   },
   {
@@ -267,9 +521,20 @@
     "image_url": "https://www.neutrogena.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-neutrogena-master-catalog/default/oil-free-acne-wash.jpg",
     "buy_link": "https://www.neutrogena.com/products/skin/oil-free-acne-wash/6811060.html",
     "category": "cleanser",
-    "target_issues": ["acne", "blackheads", "oiliness", "enlarged pores"],
-    "key_ingredients": ["salicylic acid 2%"],
-    "skin_types": ["oily", "acne-prone", "combination"],
+    "target_issues": [
+      "acne",
+      "blackheads",
+      "oiliness",
+      "enlarged pores"
+    ],
+    "key_ingredients": [
+      "salicylic acid 2%"
+    ],
+    "skin_types": [
+      "oily",
+      "acne-prone",
+      "combination"
+    ],
     "description": "Oil-free acne-fighting cleanser with 2% salicylic acid that clears breakouts and prevents new ones from forming."
   },
   {
@@ -280,9 +545,25 @@
     "image_url": "https://truskincare.com/cdn/shop/products/vitamin-c-serum-front.jpg",
     "buy_link": "https://truskincare.com/products/vitamin-c-serum",
     "category": "serum",
-    "target_issues": ["dark spots", "dullness", "hyperpigmentation", "fine lines", "redness"],
-    "key_ingredients": ["vitamin C", "hyaluronic acid", "vitamin E", "retinol"],
-    "skin_types": ["all", "normal", "dry", "oily"],
+    "target_issues": [
+      "dark spots",
+      "dullness",
+      "hyperpigmentation",
+      "fine lines",
+      "redness"
+    ],
+    "key_ingredients": [
+      "vitamin C",
+      "hyaluronic acid",
+      "vitamin E",
+      "retinol"
+    ],
+    "skin_types": [
+      "all",
+      "normal",
+      "dry",
+      "oily"
+    ],
     "description": "Daily vitamin C serum that brightens dull skin, fades dark spots, and boosts collagen for a more youthful appearance."
   },
   {
@@ -293,9 +574,22 @@
     "image_url": "https://www.tatcha.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-tatcha-master/default/dewy-skin-cream.jpg",
     "buy_link": "https://www.tatcha.com/product/the-dewy-skin-cream/",
     "category": "moisturizer",
-    "target_issues": ["dryness", "dehydration", "fine lines", "dullness"],
-    "key_ingredients": ["hyaluronic acid", "Japanese purple rice", "ceramides"],
-    "skin_types": ["dry", "normal", "sensitive"],
+    "target_issues": [
+      "dryness",
+      "dehydration",
+      "fine lines",
+      "dullness"
+    ],
+    "key_ingredients": [
+      "hyaluronic acid",
+      "Japanese purple rice",
+      "ceramides"
+    ],
+    "skin_types": [
+      "dry",
+      "normal",
+      "sensitive"
+    ],
     "description": "Rich plumping cream that restores moisture and gives skin a dewy, glassy finish. Beloved for very dry or mature skin."
   },
   {
@@ -306,9 +600,21 @@
     "image_url": "https://www.kiehls.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-kiehls-master-catalog/default/superglow-vitamin-c-serum.jpg",
     "buy_link": "https://www.kiehls.com/skin-care/serums/vitamin-c-serum/KHL505.html",
     "category": "serum",
-    "target_issues": ["dullness", "dark spots", "hyperpigmentation", "uneven texture"],
-    "key_ingredients": ["vitamin C 10.5%", "niacinamide"],
-    "skin_types": ["all", "normal", "combination"],
+    "target_issues": [
+      "dullness",
+      "dark spots",
+      "hyperpigmentation",
+      "uneven texture"
+    ],
+    "key_ingredients": [
+      "vitamin C 10.5%",
+      "niacinamide"
+    ],
+    "skin_types": [
+      "all",
+      "normal",
+      "combination"
+    ],
     "description": "Brightening serum with 10.5% vitamin C and niacinamide that reduces dark spots and gives skin an immediate glow."
   },
   {
@@ -319,9 +625,22 @@
     "image_url": "https://www.kiehls.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-kiehls-master-catalog/default/ultra-facial-cream.jpg",
     "buy_link": "https://www.kiehls.com/skin-care/moisturizers/ultra-facial-cream/KHL077.html",
     "category": "moisturizer",
-    "target_issues": ["dryness", "dehydration", "sensitivity"],
-    "key_ingredients": ["squalane", "glacial glycoprotein", "imperata cylindrica"],
-    "skin_types": ["dry", "sensitive", "normal", "all"],
+    "target_issues": [
+      "dryness",
+      "dehydration",
+      "sensitivity"
+    ],
+    "key_ingredients": [
+      "squalane",
+      "glacial glycoprotein",
+      "imperata cylindrica"
+    ],
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "normal",
+      "all"
+    ],
     "description": "24-hour lightweight daily moisturizer that preserves skin's natural moisture balance. A classic for dry, sensitive skin."
   },
   {
@@ -332,9 +651,20 @@
     "image_url": "https://www.kiehls.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-kiehls-master-catalog/default/clearly-corrective-dark-spot-solution.jpg",
     "buy_link": "https://www.kiehls.com/skin-care/serums/dark-spot-corrector/KHL428.html",
     "category": "serum",
-    "target_issues": ["dark spots", "hyperpigmentation", "uneven texture", "dullness"],
-    "key_ingredients": ["activated vitamin C", "white birch extract", "peony extract"],
-    "skin_types": ["all"],
+    "target_issues": [
+      "dark spots",
+      "hyperpigmentation",
+      "uneven texture",
+      "dullness"
+    ],
+    "key_ingredients": [
+      "activated vitamin C",
+      "white birch extract",
+      "peony extract"
+    ],
+    "skin_types": [
+      "all"
+    ],
     "description": "Targets dark spots, post-acne marks, and uneven skin tone. Clinically shown to reduce dark spots in 4 weeks."
   },
   {
@@ -345,9 +675,21 @@
     "image_url": "https://www.paulaschoice.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-paulaschoice-master/default/salicylic-acid-cleanser.jpg",
     "buy_link": "https://www.paulaschoice.com/skin-perfecting-2pct-bha-liquid-exfoliant/201.html",
     "category": "exfoliant",
-    "target_issues": ["blackheads", "enlarged pores", "acne", "uneven texture", "oiliness"],
-    "key_ingredients": ["salicylic acid 2%"],
-    "skin_types": ["oily", "combination", "acne-prone"],
+    "target_issues": [
+      "blackheads",
+      "enlarged pores",
+      "acne",
+      "uneven texture",
+      "oiliness"
+    ],
+    "key_ingredients": [
+      "salicylic acid 2%"
+    ],
+    "skin_types": [
+      "oily",
+      "combination",
+      "acne-prone"
+    ],
     "description": "Leave-on BHA exfoliant that unclogs pores, reduces blackheads, and smooths bumpy skin texture. A cult classic."
   },
   {
@@ -358,9 +700,24 @@
     "image_url": "https://www.paulaschoice.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-paulaschoice-master/default/azelaic-acid-booster.jpg",
     "buy_link": "https://www.paulaschoice.com/10pct-azelaic-acid-booster/2060.html",
     "category": "treatment",
-    "target_issues": ["redness", "acne", "hyperpigmentation", "dark spots", "uneven texture"],
-    "key_ingredients": ["azelaic acid 10%", "salicylic acid", "green tea extract"],
-    "skin_types": ["sensitive", "acne-prone", "combination", "oily"],
+    "target_issues": [
+      "redness",
+      "acne",
+      "hyperpigmentation",
+      "dark spots",
+      "uneven texture"
+    ],
+    "key_ingredients": [
+      "azelaic acid 10%",
+      "salicylic acid",
+      "green tea extract"
+    ],
+    "skin_types": [
+      "sensitive",
+      "acne-prone",
+      "combination",
+      "oily"
+    ],
     "description": "Multi-tasking treatment that calms redness, fades dark spots, and clears acne. Gentle enough for rosacea-prone skin."
   },
   {
@@ -371,9 +728,21 @@
     "image_url": "https://www.thebodyshop.com/medias/sys_master/front-images/front-images/tea-tree-facial-wash-front.jpg",
     "buy_link": "https://www.thebodyshop.com/en-us/face/cleansers/tea-tree-skin-clearing-facial-wash/p/p000059",
     "category": "cleanser",
-    "target_issues": ["acne", "oiliness", "blackheads", "enlarged pores"],
-    "key_ingredients": ["tea tree oil", "community fair trade tea tree"],
-    "skin_types": ["oily", "acne-prone", "combination"],
+    "target_issues": [
+      "acne",
+      "oiliness",
+      "blackheads",
+      "enlarged pores"
+    ],
+    "key_ingredients": [
+      "tea tree oil",
+      "community fair trade tea tree"
+    ],
+    "skin_types": [
+      "oily",
+      "acne-prone",
+      "combination"
+    ],
     "description": "Purifying cleanser with Community Fair Trade tea tree oil that deeply cleanses pores and controls excess oil."
   },
   {
@@ -384,9 +753,22 @@
     "image_url": "https://www.thebodyshop.com/medias/sys_master/front-images/front-images/drops-of-youth-concentrate-front.jpg",
     "buy_link": "https://www.thebodyshop.com/en-us/face/serums/drops-of-youth-concentrate/p/p003143",
     "category": "serum",
-    "target_issues": ["fine lines", "uneven texture", "dullness", "dehydration"],
-    "key_ingredients": ["edelweiss stem cells", "sea holly", "criste marine"],
-    "skin_types": ["all", "normal", "combination"],
+    "target_issues": [
+      "fine lines",
+      "uneven texture",
+      "dullness",
+      "dehydration"
+    ],
+    "key_ingredients": [
+      "edelweiss stem cells",
+      "sea holly",
+      "criste marine"
+    ],
+    "skin_types": [
+      "all",
+      "normal",
+      "combination"
+    ],
     "description": "Youth-boosting serum that plumps, smooths, and firms skin, reducing the appearance of fine lines and improving radiance."
   },
   {
@@ -397,9 +779,22 @@
     "image_url": "https://theordinary.com/cdn/shop/files/TO-Lactic-Acid-10pct-HA-30ml-front.jpg",
     "buy_link": "https://theordinary.com/en-us/lactic-acid-10-ha-100388.html",
     "category": "exfoliant",
-    "target_issues": ["uneven texture", "dryness", "dullness", "fine lines", "dark spots"],
-    "key_ingredients": ["lactic acid 10%", "hyaluronic acid"],
-    "skin_types": ["dry", "sensitive", "normal"],
+    "target_issues": [
+      "uneven texture",
+      "dryness",
+      "dullness",
+      "fine lines",
+      "dark spots"
+    ],
+    "key_ingredients": [
+      "lactic acid 10%",
+      "hyaluronic acid"
+    ],
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "normal"
+    ],
     "description": "Gentle AHA exfoliant that smooths skin texture and brightens without the irritation of stronger acids. Good for dry skin."
   },
   {
@@ -410,9 +805,21 @@
     "image_url": "https://www.laroche-posay.us/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-lrp-master-catalog/default/redermic-eye-contour-cream.jpg",
     "buy_link": "https://www.laroche-posay.us/our-products/face/eye-cream/redermic-r-eyes-retinol-eye-cream/3337875585413.html",
     "category": "eye cream",
-    "target_issues": ["dark circles", "puffiness", "fine lines", "dehydration"],
-    "key_ingredients": ["retinol", "caffeine", "hyaluronic acid"],
-    "skin_types": ["all", "sensitive"],
+    "target_issues": [
+      "dark circles",
+      "puffiness",
+      "fine lines",
+      "dehydration"
+    ],
+    "key_ingredients": [
+      "retinol",
+      "caffeine",
+      "hyaluronic acid"
+    ],
+    "skin_types": [
+      "all",
+      "sensitive"
+    ],
     "description": "Targeted eye cream with retinol and caffeine to reduce dark circles, puffiness, and fine lines around the eye area."
   },
   {
@@ -423,9 +830,22 @@
     "image_url": "https://www.kiehls.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-kiehls-master-catalog/default/creamy-eye-treatment-avocado.jpg",
     "buy_link": "https://www.kiehls.com/skin-care/eye-creams/creamy-eye-treatment-with-avocado/KHL085.html",
     "category": "eye cream",
-    "target_issues": ["dark circles", "puffiness", "fine lines", "dryness"],
-    "key_ingredients": ["avocado oil", "shea butter", "beta-carotene"],
-    "skin_types": ["dry", "normal", "sensitive"],
+    "target_issues": [
+      "dark circles",
+      "puffiness",
+      "fine lines",
+      "dryness"
+    ],
+    "key_ingredients": [
+      "avocado oil",
+      "shea butter",
+      "beta-carotene"
+    ],
+    "skin_types": [
+      "dry",
+      "normal",
+      "sensitive"
+    ],
     "description": "Rich eye cream that deeply moisturises the delicate under-eye area, reducing dryness, fine lines, and dark circles."
   },
   {
@@ -436,9 +856,19 @@
     "image_url": "https://theordinary.com/cdn/shop/files/TO-Multi-Peptide-Eye-Serum-15ml-front.jpg",
     "buy_link": "https://theordinary.com/en-us/multi-peptide-eye-serum-100416.html",
     "category": "eye serum",
-    "target_issues": ["dark circles", "puffiness", "fine lines"],
-    "key_ingredients": ["peptides", "caffeine", "hyaluronic acid"],
-    "skin_types": ["all"],
+    "target_issues": [
+      "dark circles",
+      "puffiness",
+      "fine lines"
+    ],
+    "key_ingredients": [
+      "peptides",
+      "caffeine",
+      "hyaluronic acid"
+    ],
+    "skin_types": [
+      "all"
+    ],
     "description": "Lightweight eye serum with peptides and caffeine that reduces puffiness, dark circles, and fine lines around the eyes."
   },
   {
@@ -449,9 +879,18 @@
     "image_url": "https://us.laneige.com/cdn/shop/products/lip-sleeping-mask-front.jpg",
     "buy_link": "https://us.laneige.com/products/lip-sleeping-mask",
     "category": "lip treatment",
-    "target_issues": ["chapping", "dryness"],
-    "key_ingredients": ["murumuru butter", "coconut oil", "vitamin C"],
-    "skin_types": ["all"],
+    "target_issues": [
+      "chapping",
+      "dryness"
+    ],
+    "key_ingredients": [
+      "murumuru butter",
+      "coconut oil",
+      "vitamin C"
+    ],
+    "skin_types": [
+      "all"
+    ],
     "description": "Overnight lip mask that intensely hydrates and repairs dry, chapped lips while you sleep. Wakes up to soft, smooth lips."
   },
   {
@@ -462,9 +901,19 @@
     "image_url": "https://www.milkmakeup.com/cdn/shop/products/liplocked-peptide-plumping-lip-primer-front.jpg",
     "buy_link": "https://www.milkmakeup.com/products/liplocked-peptide-plumping-lip-primer",
     "category": "lip treatment",
-    "target_issues": ["chapping", "fine lines", "dryness"],
-    "key_ingredients": ["peptides", "squalane", "vitamin E"],
-    "skin_types": ["all"],
+    "target_issues": [
+      "chapping",
+      "fine lines",
+      "dryness"
+    ],
+    "key_ingredients": [
+      "peptides",
+      "squalane",
+      "vitamin E"
+    ],
+    "skin_types": [
+      "all"
+    ],
     "description": "Peptide-infused lip treatment that plumps, smooths, and hydrates dry or chapped lips throughout the day."
   },
   {
@@ -475,9 +924,22 @@
     "image_url": "https://thayers.com/cdn/shop/products/witch-hazel-toner-front.jpg",
     "buy_link": "https://thayers.com/products/witch-hazel-facial-toner",
     "category": "toner",
-    "target_issues": ["enlarged pores", "oiliness", "blackheads", "acne"],
-    "key_ingredients": ["witch hazel", "aloe vera", "rose water"],
-    "skin_types": ["oily", "combination", "acne-prone"],
+    "target_issues": [
+      "enlarged pores",
+      "oiliness",
+      "blackheads",
+      "acne"
+    ],
+    "key_ingredients": [
+      "witch hazel",
+      "aloe vera",
+      "rose water"
+    ],
+    "skin_types": [
+      "oily",
+      "combination",
+      "acne-prone"
+    ],
     "description": "Alcohol-free witch hazel toner that tightens pores, controls oil, and soothes skin without stripping its moisture barrier."
   },
   {
@@ -488,9 +950,23 @@
     "image_url": "https://theordinary.com/cdn/shop/files/TO-Glycolic-Acid-7pct-Toning-Solution-240ml-front.jpg",
     "buy_link": "https://theordinary.com/en-us/glycolic-acid-7-toning-solution-100418.html",
     "category": "toner",
-    "target_issues": ["uneven texture", "dullness", "dark spots", "enlarged pores", "fine lines"],
-    "key_ingredients": ["glycolic acid 7%", "amino acids", "aloe vera"],
-    "skin_types": ["normal", "oily", "combination"],
+    "target_issues": [
+      "uneven texture",
+      "dullness",
+      "dark spots",
+      "enlarged pores",
+      "fine lines"
+    ],
+    "key_ingredients": [
+      "glycolic acid 7%",
+      "amino acids",
+      "aloe vera"
+    ],
+    "skin_types": [
+      "normal",
+      "oily",
+      "combination"
+    ],
     "description": "AHA toning solution that exfoliates the surface layer to reveal brighter, smoother skin. Use nightly for best results."
   },
   {
@@ -501,9 +977,22 @@
     "image_url": "https://www.cosrx.com/cdn/shop/products/aha-bha-clarifying-treatment-toner-front.jpg",
     "buy_link": "https://www.cosrx.com/products/aha-bha-clarifying-treatment-toner",
     "category": "toner",
-    "target_issues": ["acne", "redness", "sensitivity", "uneven texture"],
-    "key_ingredients": ["willow bark water", "niacinamide", "allantoin"],
-    "skin_types": ["sensitive", "acne-prone", "combination"],
+    "target_issues": [
+      "acne",
+      "redness",
+      "sensitivity",
+      "uneven texture"
+    ],
+    "key_ingredients": [
+      "willow bark water",
+      "niacinamide",
+      "allantoin"
+    ],
+    "skin_types": [
+      "sensitive",
+      "acne-prone",
+      "combination"
+    ],
     "description": "Gentle clarifying toner with natural BHA from willow bark that calms redness, reduces acne, and refines skin texture."
   },
   {
@@ -514,9 +1003,23 @@
     "image_url": "https://www.cosrx.com/cdn/shop/products/advanced-snail-96-mucin-power-essence-front.jpg",
     "buy_link": "https://www.cosrx.com/products/advanced-snail-96-mucin-power-essence",
     "category": "essence",
-    "target_issues": ["dryness", "fine lines", "uneven texture", "redness", "sensitivity"],
-    "key_ingredients": ["snail secretion filtrate 96%", "sodium hyaluronate"],
-    "skin_types": ["dry", "sensitive", "normal", "all"],
+    "target_issues": [
+      "dryness",
+      "fine lines",
+      "uneven texture",
+      "redness",
+      "sensitivity"
+    ],
+    "key_ingredients": [
+      "snail secretion filtrate 96%",
+      "sodium hyaluronate"
+    ],
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "normal",
+      "all"
+    ],
     "description": "96% snail mucin essence that repairs damaged skin, fades acne scars, and provides deep hydration for a plump, smooth complexion."
   }
 ]
