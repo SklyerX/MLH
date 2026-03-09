@@ -2,9 +2,10 @@
 
 import FileUpload from '@/components/file-upload';
 import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
 import { Upload } from 'lucide-react';
 import { redirect } from 'next/navigation';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { toast } from 'sonner';
 
 const steps = [
@@ -40,6 +41,9 @@ export default function Page() {
     const [isLoading, setIsLoading] = useState(false);
 
     const [currentStep, setCurrentStep] = useState<number>(0)
+
+    const [progress, setProgress] = useState<number>(0);
+    const [progressLabel, setProgressLabel] = useState<string>("Uploading files")
 
     function handleFiles(selected: FileList | null) {
         if (!selected) return
@@ -94,6 +98,31 @@ export default function Page() {
         // setFiles((prev) => [...prev, ...valid])
     }
 
+    useEffect(() => {
+        if (!isLoading) return;
+
+        const interval = setInterval(() => {
+            setProgress((prev) => {
+                const next = prev + 3.14;
+
+                if (next >= 30 && next <= 60) {
+                    setProgressLabel("Analyzing DNA");
+                }
+
+                if (next >= 60 && next <= 80) {
+                    setProgressLabel("Analyzing Fingerprints");
+                }
+
+                if (next >= 80) {
+                    setProgressLabel("Generating AI report...");
+                }
+
+                return next > 95 ? 95 : next;
+            });
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, [isLoading]);
     async function handleUpload() {
         setIsLoading(true)
         const form = new FormData();
@@ -183,6 +212,16 @@ export default function Page() {
                             Upload
                         </Button>
                     </div>
+
+                    {isLoading ? (
+                        <>
+                            <div className='mt-5'>
+                                <h2 className="text-xl">Progress</h2>
+                                <p className="text-muted-foreground">{progressLabel}</p>
+                            </div>
+                            <Progress value={progress} className='mt-5' />
+                        </>
+                    ) : null}
                 </>
             ) : null}
         </div>

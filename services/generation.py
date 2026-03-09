@@ -1,52 +1,23 @@
-from google import genai
-from google.genai import types
-import os
-from pydantic import BaseModel
-from typing import Literal
 import sys
+from google import genai
+from PIL import Image
+from io import BytesIO
 
-client = genai.Client(api_key="")
+client = genai.Client(api_key="AIzaSyBwQez_tD0GYKRtK90GwE6TdTE3Wmq8ipM")
 
 output_path = sys.argv[1]
 DNA_SEQUENCE = sys.argv[2]
 
-
-class PhysicalTraits(BaseModel):
-    eye_color: Literal["Brown", "Blue", "Green", "Hazel"]
-    hair_color: Literal["Black", "Blonde", "Brown", "Red"]
-    hair_texture: Literal["Straight", "Wavy", "Curly"]
-    skin_tone: Literal["Fair", "Medium", "Olive", "Dark"]
-    facial_structure: str  # e.g., "Sharp jawline", "Round face"
-    ancestry_clues: str  # e.g., "Northern European", "East Asian"
-
-
-# def gen_dna_sketch():
-analysis_prompt = f"Analyze this DNA sequence for phenotypic markers: {DNA_SEQUENCE}"
+visual_prompt = (
+    f"A professional forensic sketch of a person based on this DNA sequence: {DNA_SEQUENCE}. "
+    "High detail charcoal police drawing on textured paper and a neutral background. The sketch should be realistic and suitable for use in a police investigation include facts about the dna such as gender, ancestry, and other traits that can be identified from the dna sequence."
+)
 
 response = client.models.generate_content(
-    model="gemini-2.0-flash",
-    contents=analysis_prompt,
-    config={
-        "response_mime_type": "application/json",
-        "response_schema": PhysicalTraits,
-    },
-)
-traits = response.content
-visual_prompt = (
-    f"A professional forensic sketch of a person with the following traits: "
-    f"{traits.eye_color} eyes, {traits.hair_color} {traits.hair_texture} hair, "
-    f"{traits.skin_tone} skin, and {traits.facial_structure}. "
-    f"The style should be a high-detail charcoal police drawing on textured paper."
+    model="gemini-3.1-flash-image-preview", contents=visual_prompt
 )
 
-image_response = client.models.generate_images(
-    model="gemini-2.5-flash-image",
-    prompt=visual_prompt,
-    config=types.GenerateImagesConfig(
-        number_of_images=1, aspect_ratio="1:1", person_generation="ALLOW_ADULT"
-    ),
-)
-
-image_response.generated_images[0].image.save(f"{output_path}/dna_sketch.png")
-
-# return "dna_sketch.png"
+for part in response.candidates[0].content.parts:
+    if part.inline_data:
+        image = Image.open(BytesIO(part.inline_data.data))
+        image.save(f"{output_path}/dna_sketch.png")

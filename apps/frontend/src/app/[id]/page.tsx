@@ -4,6 +4,8 @@ import { Progress } from '@/components/ui/progress';
 import { redirect, useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
+import ReactMarkdown from "react-markdown";
+
 export default function Page() {
     const { id } = useParams();
     const [data, setData] = useState<any>();
@@ -40,6 +42,20 @@ export default function Page() {
 
             <div className="mt-10">
                 <h3 className="text-4xl font-semibold">AI Case breakdown</h3>
+                <div className='my-5'>
+                    <h3 className='text-2xl font-semibold'>Report</h3>
+                    <ReactMarkdown>{data.ai.report}</ReactMarkdown>
+                </div>
+                <hr />
+                <div className='my-5'>
+                    <h3 className='text-2xl font-semibold'>Internal Reasoning</h3>
+                    {data.ai.internalReasoning.map((x, i) => (
+                        <div key={i} className='my-3'>
+                            <span>Type: {x.type}</span>
+                            <ReactMarkdown>{x.text}</ReactMarkdown>
+                        </div>
+                    ))}
+                </div>
             </div>
 
             <div className="mt-10">

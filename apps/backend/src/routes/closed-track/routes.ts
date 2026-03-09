@@ -11,6 +11,7 @@ import { randomBytes } from "node:crypto";
 import { existsSync } from "node:fs";
 
 import NC from "node-cache";
+import { generateForensicAnalysis, type ForensicScene } from "./ai.js";
 
 const cache = new NC({
   stdTTL: 24 * 60 * 60, // one day
@@ -100,6 +101,24 @@ closedTrackRoutes.post("/analyze", async (c) => {
   const image = readFileSync(`${outputPath}/fingerprint_matches.png`);
   const base64 = image.toString("base64");
 
+  const dto: ForensicScene = {
+    caseId: id,
+    dna: dna_analysis.map((d: any) => ({
+      suspectName: d.suspect_id,
+      confidence: d.confidence,
+      fastaMatches: d.best_alignment_score,
+    })),
+    fingerprint: suspectData.map((s: any) => ({
+      suspectName: s.name.split(".").at(0),
+      confidence: s.confidence,
+      ransacLines: s.score,
+    })),
+  };
+
+  console.log(dto);
+
+  const data = await generateForensicAnalysis(dto);
+
   return c.json({
     success: true,
     message: "Successfully analyzed crime scene",
@@ -107,6 +126,7 @@ closedTrackRoutes.post("/analyze", async (c) => {
       id,
       suspects: { people: suspectData, image: base64 },
       dna: dna_analysis,
+      ai: data,
     },
   });
 });
@@ -119,7 +139,7 @@ async function saveFile(file: File, dir: string) {
 }
 
 closedTrackRoutes.post(
-  "/:id/imagine",
+  "/imagine",
   zValidator(
     "json",
     z.object({
@@ -147,11 +167,7 @@ closedTrackRoutes.post(
     const image = readFileSync(imgPath);
     rmSync(imgPath);
 
-    return c.body(image, {
-      headers: {
-        "Content-Type": "image/png",
-      },
-    });
+    return c.json({ image: image.toString("base64") });
   },
 );
 
