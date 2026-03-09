@@ -73,7 +73,7 @@ closedTrackRoutes.post("/analyze", async (c) => {
   const crimeDNAPath = await saveFile(crimeDNA as File, crimeDir);
 
   await Promise.all([
-    runProcess(`${process.cwd()}/binary/fingerprint_analysis`, [
+    runProcess(`${process.cwd()}/binary/Fingerprint_analysis`, [
       outputPath,
       fingerprintDir,
       crimeFPPath,
@@ -105,7 +105,7 @@ closedTrackRoutes.post("/analyze", async (c) => {
     message: "Successfully analyzed crime scene",
     data: {
       id,
-      suspects: { ...suspectData, image: base64 },
+      suspects: { people: suspectData, image: base64 },
       dna: dna_analysis,
     },
   });

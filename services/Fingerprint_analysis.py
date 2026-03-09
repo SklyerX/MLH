@@ -73,9 +73,17 @@ print(json_output)
 with open(f"{output}/fingerprint_results.json", "w") as f:
     f.write(json_output)
 # Visualizing results
-if best_matches:
+
+out_path = os.path.join(output, "fingerprint_matches.png")
+
+if best_img is not None and best_matches:
     vis = cv2.drawMatches(
         suspect_file, e_kp, best_img, best_kp, best_matches[:50], None, flags=2
     )
+else:
+    # fallback visualization so file always exists
+    vis = suspect_file
 
-    cv2.imwrite(f"{output}/fingerprint_matches.png", vis)
+cv2.imwrite(out_path, vis)
+
+print("Saved visualization to:", out_path)
